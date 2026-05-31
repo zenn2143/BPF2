@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "title": "Minyak Herba Sinergi (MHS)",
+    "category": "Herbal",
+    "price_customer": 45000,
+    "price_member": 35000,
+    "pv": 11,
+    "image": "https://via.placeholder.com/150?text=MHS",
+    "brand": "HNI-HPAI",
+    "description": "Minyak multiguna yang diracik dari ratusan herba pilihan. Sangat efektif untuk luka bakar, pijat, urut, gigitan serangga, serta menjaga kesehatan kulit."
+  },
+  {
+    "id": 2,
+    "title": "Extra Food (Hania)",
+    "category": "Suplemen",
+    "price_customer": 60000,
+    "price_member": 50000,
+    "pv": 20,
+    "image": "https://via.placeholder.com/150?text=Extra+Food",
+    "brand": "HNI-HPAI",
+    "description": "Sinergi 21 buah dan sayuran pilihan yang kaya akan antioksidan, vitamin, dan nutrisi alami untuk menjaga daya tahan tubuh anak dan keluarga."
+  },
+  {
+    "id": 3,
+    "title": "Spirulina",
+    "category": "Herbal",
+    "price_customer": 90000,
+    "price_member": 75000,
+    "pv": 30,
+    "image": "https://via.placeholder.com/150?text=Spirulina",
+    "brand": "HNI-HPAI",
+    "description": "Suplemen superfood dari alga hijau-biru murni. Kaya akan protein, asam amino, dan klorofil untuk detoksifikasi serta nutrisi harian."
+  },
+  {
+    "id": 4,
+    "title": "Kopi 7 Elemen (Sevel)",
+    "category": "Makanan & Minuman",
+    "price_customer": 110000,
+    "price_member": 90000,
+    "pv": 30,
+    "image": "https://via.placeholder.com/150?text=Kopi+Sevel",
+    "brand": "HNI-HPAI",
+    "description": "Kopi kesehatan yang diracik khusus dengan sinergi 7 elemen herbal pilihan: biji, akar, batang, kulit, daun, bunga, dan buah."
+  },
+  {
+    "id": 5,
+    "title": "Susu Kambing Etta Goat Milk",
+    "category": "Makanan & Minuman",
+    "price_customer": 75000,
+    "price_member": 60000,
+    "pv": 20,
+    "image": "https://via.placeholder.com/150?text=EGM",
+    "brand": "HNI-HPAI",
+    "description": "Susu kambing etawa bubuk murni yang sangat baik untuk menjaga kesehatan pencernaan, paru-paru, serta kepadatan tulang."
+  }
+]

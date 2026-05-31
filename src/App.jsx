@@ -15,18 +15,27 @@ const Register = React.lazy(() => import('./pages/auth/Register.jsx'));
 const Forgot = React.lazy(() => import('./pages/auth/Forgot.jsx'));
 const Categories = React.lazy(() => import('./pages/Categories.jsx'));
 
+// 🟢 Tambahkan Lazy Import untuk Products dan ProductDetail di sini
+const Products = React.lazy(() => import('./pages/Products.jsx'));
+const ProductDetail = React.lazy(() => import('./pages/ProductDetail.jsx'));
+
 function App() {
   return (
     // Membungkus seluruh rute dengan Suspense
     <Suspense fallback={<Loading />}>
-   <Routes>
-  {/* 🟢 ROUTE UNTUK DASHBOARD */}
-  <Route element={<MainLayout />}>
-    <Route path="/" element={<Dashboard />} />
-    <Route path="/categories" element={<Categories />} /> {/* Baris 25 yang bener */}
-    <Route path="/orders" element={<div className="p-10 text-2xl">Halaman Orders</div>} />
-    <Route path="/settings" element={<div className="p-10 text-2xl">Halaman Settings</div>} />
-  </Route>
+      <Routes>
+        {/* 🟢 ROUTE UNTUK DASHBOARD */}
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/categories" element={<Categories />} />
+          
+          {/* 🟢 Tambahkan 2 Route Baru di sini */}
+          <Route path="/products" element={<Products />} />
+          <Route path="/products/:id" element={<ProductDetail />} />
+          
+          <Route path="/orders" element={<div className="p-10 text-2xl">Halaman Orders</div>} />
+          <Route path="/settings" element={<div className="p-10 text-2xl">Halaman Settings</div>} />
+        </Route>
 
         {/* 🔵 ROUTE UNTUK HALAMAN AUTH */}
         <Route element={<AuthLayout />}>

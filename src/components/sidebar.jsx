@@ -1,8 +1,16 @@
 import { NavLink } from 'react-router-dom';
+import { MdLocalPharmacy } from "react-icons/md"; // Import ikon dari react-icons/md
 
 const Sidebar = () => {
+  // Menambahkan Produk HPAI dan properti icon ke dalam array
   const menus = [
     { name: 'Dashboard', path: '/' },
+    { 
+      name: 'Produk HPAI', 
+      path: '/products', 
+      id: 'menu-products',
+      icon: <MdLocalPharmacy className="mr-4 text-xl" /> 
+    },
     { name: 'Categories', path: '/categories' },
     { name: 'Orders', path: '/orders' },
     { name: 'Settings', path: '/settings' },
@@ -20,6 +28,7 @@ const Sidebar = () => {
           <NavLink
             key={menu.name}
             to={menu.path}
+            id={menu.id} // Menambahkan id (jika ada di dalam array)
             className={({ isActive }) =>
               `px-6 py-4 rounded-2xl transition-all duration-300 font-bold flex items-center ${
                 isActive 
@@ -28,6 +37,8 @@ const Sidebar = () => {
               }`
             }
           >
+            {/* Render ikon jika tersedia di data menu */}
+            {menu.icon && menu.icon}
             {menu.name}
           </NavLink>
         ))}
