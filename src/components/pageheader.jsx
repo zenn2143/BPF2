@@ -1,28 +1,23 @@
-export default function PageHeader() {
+export default function PageHeader({ title = 'Dashboard', breadcrumb = [], action }) {
   return (
-    /* 2. Terapkan layout dan flexbox untuk div pageheader-container */
-    <div id="pageheader-container" className="flex items-center justify-between p-4">
-      
-      {/* 3. Styling untuk Sisi Kiri */}
-      <div id="pageheader-left" className="flex flex-col">
-        <span id="pageheader-title" className="text-3xl font-semibold">
-          Dashboard
-        </span>
-        
-        <div id="breadcrumb-links" className="flex items-center font-medium space-x-2 mt-2">
-          <span id="breadcrumb-home" className="text-gray-500">Dashboard</span>
-          <span id="breadcrumb-separator" className="text-gray-500">/</span>
-          <span id="breadcrumb-current" className="text-gray-500">Order List</span>
-        </div>
+    <div className="flex flex-col gap-4 p-4 sm:flex-row sm:items-center sm:justify-between">
+      <div>
+        <h1 className="text-3xl font-semibold text-slate-900">{title}</h1>
+        {Array.isArray(breadcrumb) && breadcrumb.length > 0 ? (
+          <div className="mt-2 flex flex-wrap items-center gap-2 text-sm font-medium text-slate-500">
+            {breadcrumb.map((item, idx) => (
+              <span key={`${item}-${idx}`} className="flex items-center gap-2">
+                <span>{item}</span>
+                {idx < breadcrumb.length - 1 && <span className="text-slate-400">/</span>}
+              </span>
+            ))}
+          </div>
+        ) : null}
       </div>
 
-      {/* 4. Styling untuk Sisi Kanan */}
-      <div id="action-button">
-        <button id="add-button" className="bg-hijau text-white px-4 py-2 rounded-lg">
-          Add Button
-        </button>
-      </div>
-
+      {action ? (
+        <div>{action}</div>
+      ) : null}
     </div>
   );
 }

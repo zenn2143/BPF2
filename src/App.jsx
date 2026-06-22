@@ -18,10 +18,12 @@ const Login = React.lazy(() => import('./pages/auth/Login.jsx'));
 const Register = React.lazy(() => import('./pages/auth/Register.jsx'));
 const Forgot = React.lazy(() => import('./pages/auth/Forgot.jsx'));
 const Categories = React.lazy(() => import('./pages/Categories.jsx'));
+const Settings = React.lazy(() => import('./pages/Settings.jsx'));
 
 // 🟢 Tambahkan Lazy Import untuk Products dan ProductDetail di sini
 const Products = React.lazy(() => import('./pages/Products.jsx'));
 const ProductDetail = React.lazy(() => import('./pages/ProductDetail.jsx'));
+const Orders = React.lazy(() => import('./pages/Orders.jsx'));
 
 function App() {
   return (
@@ -41,8 +43,8 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<ProductDetail />} />
           
-          <Route path="/orders" element={<div className="p-10 text-2xl">Halaman Orders</div>} />
-          <Route path="/settings" element={<div className="p-10 text-2xl">Halaman Settings</div>} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/settings" element={<Settings />} />
         </Route>
 
         {/* 🔵 ROUTE UNTUK HALAMAN AUTH */}
