@@ -1,20 +1,48 @@
 import { NavLink } from 'react-router-dom';
-import { MdLocalPharmacy } from "react-icons/md"; // Import ikon dari react-icons/md
+// Import ikon tambahan dari react-icons/md agar seragam
+import { 
+  MdLocalPharmacy, 
+  MdDashboard, 
+  MdCategory, 
+  MdShoppingCart, 
+  MdSettings,
+  MdPerson
+} from "react-icons/md"; 
 
 const Sidebar = () => {
-  // Menambahkan Produk HPAI dan properti icon ke dalam array
-  const menus = [
-    { name: 'Dashboard', path: '/' },
+  // Simulasi mengecek role user (Bisa disesuaikan dengan State/Context/LocalStorage Anda)
+  // Ubah 'customer' menjadi 'owner' jika ingin melihat versi admin
+  const userRole = localStorage.getItem('role') || 'customer'; 
+
+  // 1. Array Menu Khusus Owner
+  const ownerMenus = [
+    { name: 'Dashboard', path: '/', icon: <MdDashboard className="mr-4 text-xl" /> },
     { 
-      name: 'Produk HPAI', 
+      name: 'Kelola Produk', 
       path: '/products', 
       id: 'menu-products',
       icon: <MdLocalPharmacy className="mr-4 text-xl" /> 
     },
-    { name: 'Categories', path: '/categories' },
-    { name: 'Orders', path: '/orders' },
-    { name: 'Settings', path: '/settings' },
+    { name: 'Categories', path: '/categories', icon: <MdCategory className="mr-4 text-xl" /> },
+    { name: 'Orders', path: '/orders', icon: <MdShoppingCart className="mr-4 text-xl" /> },
+    { name: 'Settings', path: '/settings', icon: <MdSettings className="mr-4 text-xl" /> },
   ];
+
+  // 2. Array Menu Khusus Customer
+  const customerMenus = [
+    { name: 'Dashboard Saya', path: '/customer-dashboard', icon: <MdPerson className="mr-4 text-xl" /> },
+    { 
+      name: 'Beli Produk', 
+      path: '/products', 
+      id: 'menu-products',
+      icon: <MdLocalPharmacy className="mr-4 text-xl" /> 
+    },
+    { name: 'Pesanan Saya', path: '/orders', icon: <MdShoppingCart className="mr-4 text-xl" /> },
+    { name: 'Settings', path: '/settings', icon: <MdSettings className="mr-4 text-xl" /> },
+  ];
+
+  // 3. Tentukan menu mana yang dirender berdasarkan role
+  const displayedMenus = userRole === 'owner' ? ownerMenus : customerMenus;
 
   return (
     <aside className="w-72 bg-[#064E3B] h-screen p-6 flex flex-col text-white shadow-2xl z-20">
@@ -24,7 +52,7 @@ const Sidebar = () => {
       </div>
       
       <nav className="flex flex-col gap-3">
-        {menus.map((menu) => (
+        {displayedMenus.map((menu) => (
           <NavLink
             key={menu.name}
             to={menu.path}

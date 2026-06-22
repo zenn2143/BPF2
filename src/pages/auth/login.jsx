@@ -33,7 +33,24 @@ export default function Login() {
       });
 
       if (response.status === 200) {
-        navigate("/");
+        // 🟠 PERUBAHAN: Simpan data dan tentukan role berdasarkan username
+        const userData = response.data;
+        
+        // Simulasi Role: emilys sebagai 'owner', user dummy lain sebagai 'customer'
+        // Jika nanti API Anda sudah punya role asli, ganti jadi: const userRole = userData.role;
+        const userRole = userData.username === 'emilys' ? 'owner' : 'customer';
+
+        // Simpan sesi ke localStorage agar bisa dibaca oleh Sidebar dan App.jsx
+        localStorage.setItem('token', userData.token);
+        localStorage.setItem('role', userRole);
+        localStorage.setItem('userData', JSON.stringify(userData));
+
+        // 🟠 PERUBAHAN: Navigasi / Redirect dinamis berdasarkan role
+        if (userRole === 'owner') {
+          navigate("/"); // Ke Owner Dashboard
+        } else {
+          navigate("/customer-dashboard"); // Ke Customer Dashboard
+        }
       }
     } catch (err) {
       if (err.response) {
@@ -72,12 +89,12 @@ export default function Login() {
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block text-sm font-semibold text-slate-600 mb-1">
-            Username (try: emilys)
+            Username (try: emilys / michaelw)
           </label>
           <input 
             type="text" 
             name="email"
-            value={dataForm.email} // Sinkronisasi state
+            value={dataForm.email} 
             onChange={handleChange}
             className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#10B981]" 
             placeholder="Enter username" 
@@ -87,12 +104,12 @@ export default function Login() {
         
         <div className="mb-6">
           <label className="block text-sm font-semibold text-slate-600 mb-1">
-            Password (try: emilyspass)
+            Password (try: emilyspass / michaelwpass)
           </label>
           <input 
             type="password" 
             name="password"
-            value={dataForm.password} // Sinkronisasi state
+            value={dataForm.password} 
             onChange={handleChange}
             className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#10B981]" 
             placeholder="••••••••" 

@@ -9,7 +9,11 @@ import AuthLayout from './layouts/AuthLayout.jsx';
 import Loading from './components/Loading.jsx';
 
 // Pages (Diubah menjadi Lazy Import agar dimuat dinamis)
-const Dashboard = React.lazy(() => import('./pages/Dashboard.jsx'));
+const Dashboard = React.lazy(() => import('./pages/Ownerdashboard.jsx'));
+
+// 🟠 TAMBAHAN BARU: Lazy import untuk Customer Dashboard
+const CustomerDashboard = React.lazy(() => import('./pages/CustomerDashboard.jsx'));
+
 const Login = React.lazy(() => import('./pages/auth/Login.jsx'));
 const Register = React.lazy(() => import('./pages/auth/Register.jsx'));
 const Forgot = React.lazy(() => import('./pages/auth/Forgot.jsx'));
@@ -27,6 +31,10 @@ function App() {
         {/* 🟢 ROUTE UNTUK DASHBOARD */}
         <Route element={<MainLayout />}>
           <Route path="/" element={<Dashboard />} />
+          
+          {/* 🟠 TAMBAHAN BARU: Route untuk Customer Dashboard */}
+          <Route path="/customer-dashboard" element={<CustomerDashboard />} />
+
           <Route path="/categories" element={<Categories />} />
           
           {/* 🟢 Tambahkan 2 Route Baru di sini */}
